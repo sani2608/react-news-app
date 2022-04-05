@@ -1,15 +1,15 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  opacity: 1;
+  border: 2px solid rgb(221, 29, 29);
+  background: #FAFAFA 0% 0% no-repeat padding-box;
 }
-
