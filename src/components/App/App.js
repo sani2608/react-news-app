@@ -1,20 +1,15 @@
+// import React from 'react'
 import React, { useEffect, useState } from 'react'
-// import { Typography, Toolbar, AppBar } from '@mui/material';
 import NewsContainer from '../NewsContainer/NewsContainer';
 import SearchBar from '../SearchBar/SearchBar';
 import Categories from '../Categories/Categories';
 import './App.css';
+import { apiKey } from '../../constants/Constant';
 
 const App = () => {
   const [newsList, setNewsList] = useState({});
-  console.log(newsList);
-  setNewsList({});
-
   useEffect(() => {
-    const serviceUrl = 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=b3c9c0873f1243ba885e751abc3cf125';
-    // console.log('App component mounted');
-    // console.log('fetching news');
-
+    const serviceUrl = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`;
     const fetchNews = async () => {
       try {
         const response = await fetch(serviceUrl);
