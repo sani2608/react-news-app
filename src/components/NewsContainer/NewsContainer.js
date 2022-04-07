@@ -1,21 +1,25 @@
 import React from 'react'
 import './NewsContainer.css'
-import { Paper } from '@mui/material';
-import SearchBar from '../SearchBar/SearchBar'
+// import { Paper } from '@mui/material';
+import NewsCard from '../NewsCard/NewsCard';
 
 const NewsContainer = () => {
   return (
-    <div className='news-container'>
-      <Paper
-        elevation={0}
-        style={{
-          padding: 8,
-          border: "1px solid black"
-        }}>
-        <SearchBar />
-      </Paper>
+    <div className='news-card' onClick={() => console.log('i was clicked')}>
+      <NewsCard />
     </div>
   )
 }
 
-export default NewsContainer
+export default NewsContainer;
+
+
+
+// <Paper
+// elevation={0}
+// style={{
+//   margin: '1%',
+//   border: "1px solid pink",
+// }}>
+// <NewsCard/>
+// </Paper>

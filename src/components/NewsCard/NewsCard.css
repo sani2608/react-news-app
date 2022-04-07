@@ -1,0 +1,37 @@
+.news-container {
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+}
+
+.first-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 10px;
+}
+
+.headline {
+    font: normal normal bold 16px/21px Roboto;
+    letter-spacing: 0px;
+    color: #212121;
+    opacity: 1;
+}
+
+.author {
+    text-align: left;
+    font: normal normal medium 12px/16px Roboto;
+    letter-spacing: 0px;
+    color: #989898;
+    opacity: 1;
+}
+
+.image {
+    top: 267px;
+    left: 858px;
+    width: 146px;
+    height: 146px;
+    background: transparent 0% 0% no-repeat;
+    border-radius: 9px;
+}

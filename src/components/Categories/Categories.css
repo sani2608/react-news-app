@@ -1,0 +1,20 @@
+.categories {
+    display: flex;
+    flex-direction: row;
+    padding: 7px 16px 6px 17px;
+    align-items: baseline;
+}
+
+.category-name-button {
+    border: none;
+    background: transparent;
+    background: #00F0C2 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+    opacity: 1;
+    font-size: 14px;
+    font: normal normal medium 14px/19px Roboto;
+    letter-spacing: 0px;
+    color: #000000;
+    height: 30px;
+
+}

@@ -1,40 +1,94 @@
-import React from 'react'
-import './App.css';
-import { Typography, Paper, Toolbar, AppBar } from '@mui/material';
+import React, { useEffect, useState } from 'react'
+// import { Typography, Toolbar, AppBar } from '@mui/material';
 import NewsContainer from '../NewsContainer/NewsContainer';
+import SearchBar from '../SearchBar/SearchBar';
+import Categories from '../Categories/Categories';
+import './App.css';
 
-const url = 'https://newsapi.org/v2/everything?q=tesla&from=2022-03-05&sortBy=publishedAt&apiKey=a5cf886a8dd84801a01c8b5bd0da1b0d';
 const App = () => {
-  const fetchNews = () => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => console.log(data))
-  };
-  fetchNews();
+  const [newsList, setNewsList] = useState({});
+  console.log(newsList);
+  setNewsList({});
+
+  useEffect(() => {
+    const serviceUrl = 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=b3c9c0873f1243ba885e751abc3cf125';
+    // console.log('App component mounted');
+    // console.log('fetching news');
+
+    const fetchNews = async () => {
+      try {
+        const response = await fetch(serviceUrl);
+        const json = await response.json();
+        setNewsList(json.articles);
+        console.log(newsList);
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+    fetchNews();
+  });
 
   return (
-    <div className="App">
-      <header>
-        <AppBar position="static">
-          <Toolbar
-            variant="dense"
-            sx={{ justifyContent: "space-between" }}>
-            <Typography
-              variant="h6"
-              color="inherit"
-              component="div"
-              align="center">
-              News App
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </header>
-
-      <div>
-        <NewsContainer />
+    <div className="parent">
+      <div className="App">
+        <div>
+          <div className='news-title'>
+            News Today
+          </div>
+          <Categories />
+          <div>
+            <SearchBar />
+          </div>
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+          <NewsContainer />
+        </div>
       </div>
     </div>
   )
 }
 
 export default App;
+
+
+
+
+// <AppBar position="static">
+//           <Toolbar
+//             variant="dense"
+//               sx={{ justifyContent: "center" }}>
+//             <Typography
+//               variant="h6"
+//               color="inherit"
+//               component="div"
+//               align="center">
+//               News App
+//             </Typography>
+//           </Toolbar>
+//         </AppBar>
