@@ -9,12 +9,12 @@ import './App.css';
 import axios from "axios";
 import { API_KEY } from '../../constants/Constant';
 
-// const SERVICE_URL = `http://localhost:3006/news`;
-// axios.defaults.baseURL = SERVICE_URL
-// axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-// axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-
 const SERVICE_URL = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`;
+axios.defaults.baseURL = SERVICE_URL
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+// const SERVICE_URL = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`;
 
 // const fetchNews = async () => {
 
