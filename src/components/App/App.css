@@ -8,8 +8,6 @@ body {
 .App {
   display: flex;
   flex-direction: column;
-  /* text-align: center; */
-  /* opacity: 1; */
   width: 1000px;
 }
 
@@ -36,5 +34,10 @@ body {
     text-align: center;
     width: 100%;
     justify-content: center;
+  }
+  .news-title {
+    font: normal normal 900 40px/53px Roboto;
+    color: #000000;
+    font-size: 26px;
   }
 }

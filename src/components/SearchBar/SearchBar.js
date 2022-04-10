@@ -1,21 +1,22 @@
 import React from 'react'
 import './SearchBar.css'
 
-
-
-const SearchBar = () => {
-  const onInputChange = (value) => { console.log(value) };
+const SearchBar = ({ onSearch }) => {
+  // const onInputChange = (value) => { console.log(value) };
   return (
     <div className="search-container">
       <input
+        className="search-input"
         onChange={(e) => {
-          onInputChange(e.target.value);
+          if (e.target.value) {
+            onSearch(e.target.value);
+          }
         }}
         type="search"
-        placeholder="searh pokedex"
+        placeholder="searh news"
       />
     </div>
   )
 }
 
-export default SearchBar
+export default SearchBar;

@@ -1,6 +1,5 @@
 import React from 'react'
 import './NewsContainer.css'
-// import { Paper } from '@mui/material';
 import NewsCard from '../NewsCard/NewsCard';
 
 const NewsContainer = ({ news }) => {
@@ -17,14 +16,3 @@ const NewsContainer = ({ news }) => {
 }
 
 export default NewsContainer;
-
-
-
-// <Paper
-// elevation={0}
-// style={{
-//   margin: '1%',
-//   border: "1px solid pink",
-// }}>
-// <NewsCard/>
-// </Paper>
