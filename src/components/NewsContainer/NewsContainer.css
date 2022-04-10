@@ -11,3 +11,13 @@
 .news-card:hover {
    cursor: pointer;
 }
+
+
+@media only screen and (max-width: 600px) {
+   .news-card {
+       /* background-color: rgb(43, 176, 221); */
+       flex-direction: column-reverse;
+   }
+
+
+}

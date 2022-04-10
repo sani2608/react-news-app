@@ -6,12 +6,11 @@ import './SearchBar.css'
 const SearchBar = () => {
   const onInputChange = (value) => { console.log(value) };
   return (
-    <div>
+    <div className="search-container">
       <input
         onChange={(e) => {
           onInputChange(e.target.value);
         }}
-        className="search"
         type="search"
         placeholder="searh pokedex"
       />

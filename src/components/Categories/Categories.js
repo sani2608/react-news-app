@@ -1,19 +1,21 @@
 import React from 'react'
 import './Categories.css';
 
-const categorieList = ["TechCrunch", "Business", "wall streeet journal", "technology", "climate", "daily soaps"];
+const categorieList = ["business", "entertainment", "health", "technology", "science", "sports", "technology"];
 const Categories = () => {
   return (
-    <div>
-      <div className='categories'>
+    <div className='categories'>
         {
           categorieList.map((category, index) => {
-            return <button className='category-name-button' key={index}>{category}</button>
+            return <button
+              className='category-name-button'
+              key={index}
+              onClick={() => { console.log('I was clicked', index) }}>
+              {category}
+            </button>
           })
-        }
-      </div>
+      }
     </div>
-
   )
 }
 

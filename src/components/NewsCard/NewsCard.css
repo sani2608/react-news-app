@@ -42,3 +42,33 @@
     flex-direction: column;
     justify-content: space-around;
 }
+
+@media only screen and (max-width: 600px) {
+    .news-container {
+        /* background-color: rgb(43, 176, 221); */
+        flex-direction: column-reverse;
+    }
+
+    .image {
+        width: 100%;
+        /* height: 80%; */
+        background: transparent 0% 0% no-repeat;
+        border-radius: 9px;
+    }
+    .author{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first-section {
+        margin-top: 5px;
+        padding: 0px;
+    }
+    .content-description{
+        display: none;
+    }
+    .news-container {
+        padding: 10px;
+    }
+
+}

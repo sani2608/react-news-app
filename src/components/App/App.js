@@ -9,12 +9,13 @@ import './App.css';
 import axios from "axios";
 import { API_KEY } from '../../constants/Constant';
 
-const SERVICE_URL = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`;
-axios.defaults.baseURL = SERVICE_URL
+// const SERVICE_URL = `https://newsapi.org/v2/`;
+// top-headlines?country=us&category=business&apiKey=${API_KEY}
+// axios.defaults.baseURL = SERVICE_URL
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-// const SERVICE_URL = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`;
+const SERVICE_URL = `/top-headlines?country=in&category=technology&apiKey=${API_KEY}`;
 
 // const fetchNews = async () => {
 
@@ -26,19 +27,25 @@ axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 //     });
 // };
 
+/** categories
+https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=0da5b3f275b64cc6a28c733cc27deea9
+https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=0da5b3f275b64cc6a28c733cc27deea9
+https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=0da5b3f275b64cc6a28c733cc27deea9
+https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=0da5b3f275b64cc6a28c733cc27deea9
+https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=0da5b3f275b64cc6a28c733cc27deea9
+https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=0da5b3f275b64cc6a28c733cc27deea9
+
+*/
+
 const App = () => {
   const [newsList, setNewsList] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      // const response = await axios.get('/api/news');
       const response = await axios.get(SERVICE_URL);
-      // console.log(response);
-      // const json = await response.json();
       setNewsList(response.data.articles); 
       console.log('news list', newsList);
     };
-
     getData();
   }, []);
 

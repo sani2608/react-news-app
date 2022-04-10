@@ -7,3 +7,10 @@
     margin: 10px;
     font-family: "Press start 2P", cursive;
 }
+.search-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}

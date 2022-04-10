@@ -1,7 +1,13 @@
 import React from 'react'
+import Moment from 'moment';
 import './NewsCard.css'
 
 const NewsCard = ({ news }) => {
+
+  const formatDate = (publishedOn) => {
+    const date = new Date(publishedOn);
+    return Moment(date).format('MMMM Do YYYY');
+  }
 
   return (
     <div className='news-container'>
@@ -12,11 +18,10 @@ const NewsCard = ({ news }) => {
           {
             news.author !== null ? <span className='author-name'><b>author:</b> {news.author}</span> : ''
           }
-          <span className='publish-date'><b>published on:</b> {news.publishedAt}</span>
+          <span className='publish-date'><b>published on:</b> {formatDate(news.publishedAt)}</span>
         </div>
 
-        <div> {news.content}<br />  {news.description}
-        </div>
+        <div className='content-description'> {news.content}<br />  {news.description}</div>
       </div>
       <div className='second-section'>
         <img
