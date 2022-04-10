@@ -8,6 +8,7 @@ import Categories from '../Categories/Categories';
 import './App.css';
 import axios from "axios";
 import { API_KEY } from '../../constants/Constant';
+const categorieList = ["business", "entertainment", "health", "technology", "science", "sports"];
 
 // const SERVICE_URL = `https://newsapi.org/v2/`;
 // top-headlines?country=us&category=business&apiKey=${API_KEY}
@@ -49,6 +50,14 @@ const App = () => {
     getData();
   }, []);
 
+  const handleCategoryClick = (index) => {
+    console.log('category', index);
+    const url = `/top-headlines?country=in&category=${categorieList[index]}&apiKey=${API_KEY}`;
+    axios.get(url).then(response => {
+      setNewsList(response.data.articles);
+    });
+  }
+
   return (
     <div className="parent">
       <div className="App">
@@ -56,13 +65,13 @@ const App = () => {
           <div className='news-title'>
             News Today
           </div>
-          <Categories />
+          <Categories  categorieList={categorieList} handleCategoryClick={handleCategoryClick}  />
           <div>
             <SearchBar />
           </div>
           {
             newsList.map((news, index) => {
-              return <NewsContainer key={index} news={news} />
+              return <NewsContainer key={index} news={news} categorieList={categorieList} />
             })
           }
         </div>

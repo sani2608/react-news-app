@@ -11,7 +11,7 @@ const NewsContainer = ({ news }) => {
   };
   return (
     <div className='news-card' onClick={() => navToNewsPage(news.url)}>
-      <NewsCard  news={news}/>
+      <NewsCard news={news}/>
     </div>
   )
 }

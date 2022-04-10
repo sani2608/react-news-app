@@ -1,8 +1,7 @@
 import React from 'react'
 import './Categories.css';
 
-const categorieList = ["business", "entertainment", "health", "technology", "science", "sports", "technology"];
-const Categories = () => {
+const Categories = ({ categorieList, handleCategoryClick }) => {
   return (
     <div className='categories'>
         {
@@ -10,7 +9,7 @@ const Categories = () => {
             return <button
               className='category-name-button'
               key={index}
-              onClick={() => { console.log('I was clicked', index) }}>
+              onClick={() => { handleCategoryClick(index) }}>
               {category}
             </button>
           })
