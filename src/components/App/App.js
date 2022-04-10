@@ -5,10 +5,16 @@ import Categories from '../Categories/Categories';
 import './App.css';
 import axios from "axios";
 import { API_KEY } from '../../constants/Constant';
+
+import { TECHNOLOGY, ENTERTAINMENT, BUSINESS, HEALTH, SCIENCE, SPORTS, SAMPLE_NEWS } from '../../constants/News';
+
+
+
+
+
+
 const categorieList = ["technology", "entertainment", "business", "health", "science", "sports"];
 
-// axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-// axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 const App = () => {
   const [newsList, setNewsList] = useState([]);
@@ -26,25 +32,55 @@ const App = () => {
     }
   }
 
-  const getData = async (index = 0) => {
-    const SERVICE_URL = `/top-headlines?country=in&category=${categorieList[index]}&apiKey=${API_KEY}`;
-    const response = await axios.get(SERVICE_URL);
-    setNewsList(response.data.articles);
-    console.log('news list', newsList);
+  const getData = async (index) => {
+    // const SERVICE_URL = `https://newsapi.org/v2/top-headlines?country=in&category=${categorieList[index]}&apiKey=${API_KEY}`;
+    // const response = await axios.get(SERVICE_URL);
+    // setNewsList(response.data.articles);
+
+    // setNewsList(category);
+    switch (index) {
+      case 0:
+        setNewsList(TECHNOLOGY);
+        break;
+      case 1:
+        setNewsList(ENTERTAINMENT);
+        break;
+      case 2:
+        setNewsList(BUSINESS);
+        break;
+      case 3:
+        setNewsList(SAMPLE_NEWS);
+        break;
+      case 4:
+        setNewsList(SCIENCE);
+        break;
+      case 5:
+        setNewsList(SPORTS);
+        break;
+      default: console.log('invalid category');
+        console.log('news list', newsList);
+    }
   };
 
   useEffect(() => {
-    getData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // getData();
+    setNewsList(TECHNOLOGY);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleCategoryClick = (index) => { getData(index); setIsActive(index); };
+  const handleCategoryClick = (index) => {
+
+
+    getData(index);
+    setIsActive(index);
+  };
 
   const onSearch = async (value) => {
     console.log('GETTING DATA');
-    const SERVICE_URL = `/everything?q=${value}&apiKey=${API_KEY}`;
-    const response = await axios.get(SERVICE_URL);
-    setNewsList(response.data.articles);
+    // const SERVICE_URL = `https://newsapi.org/v2/everything?q=${value}&apiKey=${API_KEY}`;
+    // const response = await axios.get(SERVICE_URL);
+    // setNewsList(response.data.articles);
+    setNewsList(SAMPLE_NEWS);
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -73,20 +109,3 @@ const App = () => {
 }
 
 export default App;
-
-
-
-// useEffect(() => {
-//   const serviceUrl = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`;
-//   const fetchNews = async () => {
-//     try {
-//       const response = await fetch(serviceUrl);
-//       const json = await response.json();
-//       setNewsList(json.articles);
-//       console.log(newsList);
-//     } catch (error) {
-//       console.log("error", error);
-//     }
-//   }
-//   fetchNews();
-// },[newsList]);
