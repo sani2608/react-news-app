@@ -1,16 +1,24 @@
 import React from 'react'
 import './Category.css'
 
-const categorieList = ["TechCrunch", "Business", "wall streeet journal", "technology", "climate", "daily soaps"];
-const Category = () => {
+const Category = ({ categorieList, handleCategoryClick, isIndexActive }) => {
   return (
-    <div >
+    <>
       {
-        categorieList.map((category,index) => {
-          return <p className='category-name' key={index}>{category}</p>
+        categorieList.map((category, index) => {
+          return <button
+            className={
+              isIndexActive === index ? 'category-name-button-active' : 'category-name-button'
+            }
+            key={index}
+            onClick={() => {
+              handleCategoryClick(index);
+            }}>
+            {category}
+          </button>
         })
       }
-    </div>
+    </>
   )
 }
 

@@ -10,6 +10,8 @@
 
 .news-card:hover {
    cursor: pointer;
+   box-shadow: 5px 5px 30px #06050510;
+   border: 1px solid #dfcbcb;
 }
 
 

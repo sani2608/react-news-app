@@ -1,19 +1,12 @@
 import React from 'react'
+import Category from '../Category/Category';
 import './Categories.css';
 
-const Categories = ({ categorieList, handleCategoryClick }) => {
+const Categories = ({ categorieList, handleCategoryClick, isIndexActive }) => {
+
   return (
     <div className='categories'>
-        {
-          categorieList.map((category, index) => {
-            return <button
-              className='category-name-button'
-              key={index}
-              onClick={() => { handleCategoryClick(index) }}>
-              {category}
-            </button>
-          })
-      }
+      <Category isIndexActive={isIndexActive} categorieList={categorieList} handleCategoryClick={handleCategoryClick} />
     </div>
   )
 }

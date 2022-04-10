@@ -8,55 +8,27 @@ import Categories from '../Categories/Categories';
 import './App.css';
 import axios from "axios";
 import { API_KEY } from '../../constants/Constant';
-const categorieList = ["business", "entertainment", "health", "technology", "science", "sports"];
+const categorieList = ["technology", "entertainment", "business", "health", "science", "sports"];
 
-// const SERVICE_URL = `https://newsapi.org/v2/`;
-// top-headlines?country=us&category=business&apiKey=${API_KEY}
-// axios.defaults.baseURL = SERVICE_URL
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-
-const SERVICE_URL = `/top-headlines?country=in&category=technology&apiKey=${API_KEY}`;
-
-// const fetchNews = async () => {
-
-//   fetch(SERVICE_URL).then(
-//     response => response.json()).then(data => {
-//       console.log('SUCCESS:', data);
-//       // setNewsList(data.articles);
-//       return data;
-//     });
-// };
-
-/** categories
-https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=0da5b3f275b64cc6a28c733cc27deea9
-https://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=0da5b3f275b64cc6a28c733cc27deea9
-https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=0da5b3f275b64cc6a28c733cc27deea9
-https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=0da5b3f275b64cc6a28c733cc27deea9
-https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=0da5b3f275b64cc6a28c733cc27deea9
-https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=0da5b3f275b64cc6a28c733cc27deea9
-
-*/
+// axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+// axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 const App = () => {
   const [newsList, setNewsList] = useState([]);
+  const [isIndexActive, setIsActive] = useState(0);
+
+  const getData = async (index = 0) => {
+    const SERVICE_URL = `/top-headlines?country=in&category=${categorieList[index]}&apiKey=${API_KEY}`;
+    const response = await axios.get(SERVICE_URL);
+    setNewsList(response.data.articles);
+    console.log('news list', newsList);
+  };
 
   useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get(SERVICE_URL);
-      setNewsList(response.data.articles); 
-      console.log('news list', newsList);
-    };
     getData();
   }, []);
 
-  const handleCategoryClick = (index) => {
-    console.log('category', index);
-    const url = `/top-headlines?country=in&category=${categorieList[index]}&apiKey=${API_KEY}`;
-    axios.get(url).then(response => {
-      setNewsList(response.data.articles);
-    });
-  }
+  const handleCategoryClick = (index) => { getData(index); setIsActive(index); };
 
   return (
     <div className="parent">
@@ -65,7 +37,7 @@ const App = () => {
           <div className='news-title'>
             News Today
           </div>
-          <Categories  categorieList={categorieList} handleCategoryClick={handleCategoryClick}  />
+          <Categories isIndexActive={isIndexActive} categorieList={categorieList} handleCategoryClick={handleCategoryClick} />
           <div>
             <SearchBar />
           </div>
